@@ -26,7 +26,7 @@ namespace DatabasutvecklingInlämningsuppgift
 
         }
 
-        public  VerifyInput(ref )
+        
 
 
 
