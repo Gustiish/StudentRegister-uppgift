@@ -33,24 +33,27 @@ namespace DatabasutvecklingInlämningsuppgift
             Student student = new Student(firstName, lastName, city);
             db.Add(student);
             db.SaveChanges();
-            Meny.MenuDisplay();
+            
         }
 
         public void ChangeAStudent()
         {
             if (db.Students != null)
             {
+               
                 Console.WriteLine("Choose id of student you want to change");
                 DisplayStudentList();
                 int userInput = int.Parse(Console.ReadLine());
-                Student selectedStudent = (Student)db.Students.Where(s => s.StudentId == userInput);
+                Student selectedStudent = db.Students.SingleOrDefault(s => s.StudentId == userInput); //Kan inte casta en databsen tillbaka till student.
 
                 Console.WriteLine("New first name?");
                 string firstName = Console.ReadLine();
                 Console.WriteLine("New last name?");
-                string lastName = Console.ReadLine();
+                string lastName = Console.ReadLine();   
                 Console.WriteLine("New city?");
                 string city = Console.ReadLine();
+
+
 
                 selectedStudent.FirstName = firstName;
                 selectedStudent.LastName = lastName;
@@ -63,16 +66,17 @@ namespace DatabasutvecklingInlämningsuppgift
                 Console.WriteLine("Database is null");
             }
 
-            Meny.MenuDisplay();
+            
         }
 
         public void DisplayStudentList()
         {
             foreach (Student student in db.Students)
             {
-                Console.WriteLine($"Id: {student.StudentId}\nFirstname: {student.FirstName}\nLastName: {student.LastName}\nCity {student.City}");
+                Console.WriteLine($"Id: {student.StudentId}\nFirstname: {student.FirstName}\nLastName: {student.LastName}\nCity: {student.City}");
                 Console.WriteLine("----------------------");
             }
+            
         }
 
 

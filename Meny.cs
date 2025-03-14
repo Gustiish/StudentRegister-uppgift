@@ -21,6 +21,7 @@ namespace DatabasutvecklingInlämningsuppgift
             Console.WriteLine("1: Register a student");
             Console.WriteLine("2: Change a student");
             Console.WriteLine("3: List all students");
+            Console.WriteLine("4: Close program");
             MenuInputHandling();
 
         }
@@ -32,12 +33,17 @@ namespace DatabasutvecklingInlämningsuppgift
             {
                 case 1:
                     StudentRegister.RegisterAStudent();
+                    MenuDisplay();
                     break;
                 case 2:
-                    // change a student
+                    StudentRegister.ChangeAStudent();
+                    MenuDisplay();
                     break;
                 case 3:
                     StudentRegister.DisplayStudentList();
+                    MenuDisplay();
+                    break;
+                case 4:
                     break;
             }
 
