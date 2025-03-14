@@ -5,8 +5,11 @@
         static void Main(string[] args)
         {
             StudentRegister studentRegister = new StudentRegister();
+            studentRegister.Meny.MenuDisplay();
 
-            var db = new StudentDBContext();
+            
+
+           
 
 
 

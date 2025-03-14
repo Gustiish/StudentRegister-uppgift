@@ -13,7 +13,7 @@ namespace DatabasutvecklingInlämningsuppgift
         public Meny(StudentRegister studentRegister)
         {
             this.StudentRegister = studentRegister;
-            MenuDisplay();
+            
         }
 
         public void MenuDisplay()
@@ -21,8 +21,25 @@ namespace DatabasutvecklingInlämningsuppgift
             Console.WriteLine("1: Register a student");
             Console.WriteLine("2: Change a student");
             Console.WriteLine("3: List all students");
-            StudentRegister.RegisterAStudent();
+            MenuInputHandling();
 
+        }
+
+        public void MenuInputHandling()
+        {
+            int userInput = Convert.ToInt32(Console.ReadLine());
+            switch (userInput)
+            {
+                case 1:
+                    StudentRegister.RegisterAStudent();
+                    break;
+                case 2:
+                    // change a student
+                    break;
+                case 3:
+                    StudentRegister.DisplayStudentList();
+                    break;
+            }
 
         }
 
