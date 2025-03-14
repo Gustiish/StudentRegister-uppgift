@@ -15,10 +15,20 @@ namespace DatabasutvecklingInlämningsuppgift
             this.Meny = new Meny(this);
         }
 
-        public void RegisterAStudent()
+        public void RegisterAStudent(StudentDBContext db)
         {
+            
+
             Console.WriteLine("")
+
+
+
+            Student student = new Student();
+            db.Add(student);
+            db.SaveChanges();
         }
+
+        
 
 
     }
