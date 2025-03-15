@@ -10,7 +10,7 @@ namespace DatabasutvecklingInlämningsuppgift
     internal class StudentDBContext : DbContext
     {
 
-        private string connectionsString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=DemoDatabase;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
+        private string connectionsString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=DatabasutvecklingUppgift;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
         public DbSet<Student> Students { get; set; }
 
 
