@@ -28,7 +28,14 @@ namespace DatabasutvecklingInlämningsuppgift
 
         public void MenuInputHandling()
         {
-            int userInput = Convert.ToInt32(Console.ReadLine());
+            int userInput;
+            try
+            {
+
+            }
+
+
+
             switch (userInput)
             {
                 case 1:
@@ -46,8 +53,9 @@ namespace DatabasutvecklingInlämningsuppgift
                 case 4:
                     break;
             }
-
         }
+
+        
 
         
 
