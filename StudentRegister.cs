@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.WebSockets;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -43,35 +44,40 @@ namespace DatabasutvecklingInlämningsuppgift
 
                 Console.WriteLine("Choose id of student you want to change");
                 DisplayStudentList();
-                int userInput = int.Parse(Console.ReadLine());
-                Student selectedStudent = db.Students.SingleOrDefault(s => s.StudentId == userInput);
-
-                if (selectedStudent != null)
+                if (int.TryParse(Console.ReadLine(), out int value))
                 {
-                    Console.WriteLine("New first name?");
-                    string firstName = Console.ReadLine();
-                    Console.WriteLine("New last name?");
-                    string lastName = Console.ReadLine();
-                    Console.WriteLine("New city?");
-                    string city = Console.ReadLine();
+                    int userInput = value;
+                    Student selectedStudent = db.Students.SingleOrDefault(s => s.StudentId == userInput);
+                    if (selectedStudent != null)
+                    {
+                        Console.WriteLine("New first name?");
+                        string firstName = Console.ReadLine();
+                        Console.WriteLine("New last name?");
+                        string lastName = Console.ReadLine();
+                        Console.WriteLine("New city?");
+                        string city = Console.ReadLine();
 
-                    selectedStudent.FirstName = firstName;
-                    selectedStudent.LastName = lastName;
-                    selectedStudent.City = city;
+                        selectedStudent.FirstName = firstName;
+                        selectedStudent.LastName = lastName;
+                        selectedStudent.City = city;
 
-                    db.SaveChanges();
-                }
+                        db.SaveChanges();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid student id");
+                    }
+
+                }  
                 else
                 {
-                    Console.WriteLine("Invalid student id");
+                    Console.WriteLine("Must be a string");
                 }
             }
             else
             {
                 Console.WriteLine("Database is null");
             }
-
-
         }
 
         public void DisplayStudentList()
