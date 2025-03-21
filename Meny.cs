@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +14,7 @@ namespace DatabasutvecklingInlämningsuppgift
         public Meny(StudentRegister studentRegister)
         {
             this.StudentRegister = studentRegister;
-            
+
         }
 
         public void MenuDisplay()
@@ -21,20 +22,28 @@ namespace DatabasutvecklingInlämningsuppgift
             Console.WriteLine("1: Register a student");
             Console.WriteLine("2: Change a student");
             Console.WriteLine("3: List all students");
-            Console.WriteLine("4: Close program");
+            Console.WriteLine("4: Delete a student");
+            Console.WriteLine("5: Close program");
             MenuInputHandling();
 
         }
 
         public void MenuInputHandling()
         {
-            int userInput;
-            try
+            int userInput = 0;
+
+            while (true)
             {
-
+                if (int.TryParse(Console.ReadLine(), out int value))
+                {
+                    userInput = value;
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Must be an int");
+                }
             }
-
-
 
             switch (userInput)
             {
@@ -51,13 +60,23 @@ namespace DatabasutvecklingInlämningsuppgift
                     MenuDisplay();
                     break;
                 case 4:
+                    StudentRegister.DeleteStudent();
+                    MenuDisplay();
+                    break;
+                case 5:
                     break;
             }
+
         }
 
-        
 
-        
+
+
+
+
+
+
+
 
 
 
