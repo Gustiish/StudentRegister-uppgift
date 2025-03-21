@@ -36,15 +36,31 @@ namespace DatabasutvecklingInlämningsuppgift
             {
                 if (int.TryParse(Console.ReadLine(), out int value))
                 {
-                    userInput = value;
-                    break;
+                    if (0 < value && value < 6)
+                    {
+                        userInput = value;
+                        MenuChoiceHandling(userInput);
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Must be a valid choice");
+                        MenuDisplay();
+                    }
                 }
                 else
                 {
                     Console.WriteLine("Must be an int");
+                    MenuDisplay();
                 }
             }
 
+          
+
+        }
+
+        private void MenuChoiceHandling(int userInput)
+        {
             switch (userInput)
             {
                 case 1:
@@ -66,21 +82,6 @@ namespace DatabasutvecklingInlämningsuppgift
                 case 5:
                     break;
             }
-
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }
