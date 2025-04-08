@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DatabasutvecklingInlämningsuppgift
 {
-    internal class Meny
+    public class Meny
     {
         private StudentRegister StudentRegister;
 

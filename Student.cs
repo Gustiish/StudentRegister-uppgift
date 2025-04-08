@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DatabasutvecklingInlämningsuppgift
 {
-    internal class Student
+    public class Student
     {
         public int StudentId { get; set; }
         public string FirstName { get; set; }

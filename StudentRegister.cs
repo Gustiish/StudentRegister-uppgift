@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace DatabasutvecklingInlämningsuppgift
 {
-    internal class StudentRegister
+    public class StudentRegister
     {
         public Meny Meny { get; set; }
-        private StudentDBContext db = new StudentDBContext();
+        public StudentDBContext db = new StudentDBContext();
         public List<Student> StudentList = new List<Student>();
 
 
@@ -106,6 +106,11 @@ namespace DatabasutvecklingInlämningsuppgift
                 Console.WriteLine("Invalid student id");
             }
 
+        }
+
+        public void UserLogin()
+        {
+            Console.WriteLine("");
         }
 
 
