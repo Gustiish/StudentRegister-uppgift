@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DatabasutvecklingInlämningsuppgift.Migrations
 {
     [DbContext(typeof(StudentDBContext))]
-    [Migration("20250410080046_initial")]
+    [Migration("20250410185252_initial")]
     partial class initial
     {
         /// <inheritdoc />
@@ -44,9 +44,47 @@ namespace DatabasutvecklingInlämningsuppgift.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("StudentClassId")
+                        .HasColumnType("int");
+
                     b.HasKey("StudentId");
 
+                    b.HasIndex("StudentClassId");
+
                     b.ToTable("Students");
+                });
+
+            modelBuilder.Entity("DatabasutvecklingInlämningsuppgift.StudentClass", b =>
+                {
+                    b.Property<int>("StudentClassId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StudentClassId"));
+
+                    b.Property<string>("ClassName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("StudentClassId");
+
+                    b.ToTable("StudentClasses");
+                });
+
+            modelBuilder.Entity("DatabasutvecklingInlämningsuppgift.Student", b =>
+                {
+                    b.HasOne("DatabasutvecklingInlämningsuppgift.StudentClass", "StudentClass")
+                        .WithMany("Students")
+                        .HasForeignKey("StudentClassId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("StudentClass");
+                });
+
+            modelBuilder.Entity("DatabasutvecklingInlämningsuppgift.StudentClass", b =>
+                {
+                    b.Navigation("Students");
                 });
 #pragma warning restore 612, 618
         }

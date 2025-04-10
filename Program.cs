@@ -4,12 +4,19 @@
     {
         static void Main(string[] args)
         {
-            StudentRegister studentRegister = new StudentRegister();
-            studentRegister.Meny.MenuDisplay();
 
-            
+            StudentDBContext studentDb = new StudentDBContext();
 
-           
+            StudentController controller = new StudentController(studentDb);
+
+
+            while (controller.IsProgramOn)
+            {
+                controller.studentView.DisplayStudentMainMenu();
+            }
+
+
+
 
 
 
